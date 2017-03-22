@@ -1,0 +1,175 @@
+1<html>
+<head>
+    <title>EZ Score on the web! WATTBA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    BODY{
+      background-color: black;
+    }
+    table {
+    height: 100px;
+  }
+  hr.style-one {
+      border: 0;
+      height: 1px;
+      background: #333;
+      background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  }
+  @font-face {
+    font-family: "DJB";
+    src: url("http://swvoffroad.com/ezscore/fonts/scoreboard.ttf");
+}
+  .button {
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family:monospace;
+    font-weight: bold;
+
+}
+
+    td{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      font-family:monospace;
+      font-size:25px;
+      font-weight:lighter;
+      text-transform:uppercase;
+      color: white;
+    }
+
+    td.score{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      font-family: "DJB";
+      font-size:20px;
+      font-weight:lighter;
+      text-transform:uppercase;
+      color: white;
+      background-color: black;
+      border: 1px solid white;
+    }
+
+    h1{
+      text-align: center;
+      text-transform: uppercase;
+      font-family: "DJB";
+      color: #28ff21;
+      font-size: 40px;
+      font-weight: lighter;
+    }
+    h2{
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 8px;
+      font-family:monospace;;
+      color: gray;
+    }
+    h3{
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 18px;
+      font-family:monospace;
+      color: white;
+      font-weight:lighter;
+    }
+    .button1 {background-color: #77c67a;} /* green */
+    .button2 {background-color: #ed685e;} /* red */
+
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var hometeam = 0;
+    var awayteam = 0;
+
+    var GET = {};
+    var query = window.location.search.substring(1).split("&");
+    for (var i = 0, max = query.length; i < max; i++)
+    {
+        if (query[i] === "") // check for trailing & with no param
+            continue;
+
+        var param = query[i].split("=");
+        GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
+    }
+
+    function pullPlayTo{
+        var playto = GET.playto
+      }
+
+    function HTADD() {
+        hometeam += 1;
+        document.getElementById("hometeam").innerHTML = hometeam;
+    };
+    function HTSUB() {
+      if(hometeam > 0){
+        hometeam -= 1;
+        document.getElementById("hometeam").innerHTML = hometeam;
+      }
+        else {
+          document.getElementById("hometeam").innerHTML = hometeam;
+        }
+    };
+    function ATADD() {
+        awayteam += 1;
+        document.getElementById("awayteam").innerHTML = awayteam;
+    };
+    function ATSUB() {
+      if(awayteam > 0){
+        awayteam -= 1;
+        document.getElementById("awayteam").innerHTML = awayteam;
+      }
+        else {
+          document.getElementById("awayteam").innerHTML = awayteam;
+        }
+    };
+
+    </script>
+
+<h1>ezscore web</h1>
+<hr>
+<h3>You are playing to: <b><a id="playto">08</a></b></h3>
+<button class="button button3" type="button" onClick="pullPlayTo()">Load Score</button>
+<center>
+    <table>
+      <tr>
+        <td>
+    <button class="button button1" type="button" onClick="HTADD()">Home +1</button>
+</td>
+<td>
+  <button class="button button1" type="button" onClick="ATADD()">Away +1</button>
+</td>
+</tr>
+<td class="score">
+    <p>Home</p>
+    <p><font size="50"<a id="hometeam">0</a></font></p>
+  </td>
+  <td class="score">
+    <p>Away</p>
+    <p><font size="50"><a id="awayteam">0</a></font></p>
+  </td>
+</tr>
+<td>
+    <button class="button button2" type="button" onClick="HTSUB()">Home -1</button>
+  </td>
+    <td>
+  <button class="button button2" type="button" onClick="ATSUB()">Away -1</button>
+  </td>
+</tr>
+</table>
+<a href="https://play.google.com/store/apps/details?id=com.swvoffroad.jebsears.simplescoretracker&hl=en">
+<img src="http://swvoffroad.com/ezscore/images/google-play.png"
+height="25px"></img></a>
+<h2>this website is a jebs production</h2>
+</body>
+</html>
